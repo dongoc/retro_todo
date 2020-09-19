@@ -4,7 +4,7 @@
  * 5. 폴님이 주신 영상 보기
  * 6. 재귀 사용하기
  */
-
+////// git commit test
 const todoInput = document.querySelector('#todoInput');
 const ul = document.querySelector('ul');
 const firstMessege = document.querySelector('#noList');
