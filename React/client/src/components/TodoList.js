@@ -1,7 +1,10 @@
 import React from "react";
 import TodoListEntry from "./TodoListEntry";
-
-const TodoList =(props) => {
+// 1. 폴님 : setTodoItem을 해준다
+// 2. 시영님 : root에 todolistEntry를 prepand 
+// new Date()
+// input -> post -> todolists -> map 
+const TodoList = (props) => {
 
   const renderTodoLists = () => {
     return props.todoLists.map((todo) => {

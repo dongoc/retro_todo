@@ -9,6 +9,7 @@ const App = () => {
   const [isOnNotStarted, setIsOnNotStarted] = useState(true);
   const [isOnInProgress, setIsOnInProgress] = useState(true);
   const [isOnCompleted, setIsOnCompleted] = useState(true);
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     getTodoLists();
@@ -17,9 +18,12 @@ const App = () => {
   useEffect(() => {
     if (todoItem.length) {
       postTodo(todoItem);
-      getTodoLists();
     }
   }, [todoItem])
+
+  useEffect(() => {
+    getTodoLists();
+  }, [todoLists])
 
   const getTodoLists = async () => {
     const res = await axios.get('http://localhost:8080')
