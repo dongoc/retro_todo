@@ -1,0 +1,303 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');*/
+@font-face {
+  font-family: "S-CoreDream-3Light";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f7cbb2;
+  font-family: "S-CoreDream-3Light";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  width: 500px;
+  height: 700px;
+  background: #faf4e6;
+  border: 4px solid #000000;
+  border-radius: 20px;
+  box-shadow: 7px 7px 0px #000000;
+  position: relative;
+}
+
+#noList {
+  text-align: center;
+  font-size: 20px;
+  color: #555;
+  line-height: 430px;
+}
+
+/* header */
+
+header {
+  border-bottom: 4px solid #000000;
+  padding: 15px 20px 10px 20px;
+}
+
+.title_container {
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.button_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.filterbtn {
+  width: 30px;
+  height: 30px;
+  border: 4px solid #000000;
+  border-radius: 50%;
+  outline: none;
+  margin: 0 2px 0 2px;
+  cursor: pointer;
+}
+
+.filterbtn:hover {
+  /* 여기 조절*/
+  width: 32px;
+  height: 32px;
+}
+
+.not_started {
+  background-color: /*rgba(255,113,113, 0.5)*/ #ff7171 !important;
+}
+
+.in_progress {
+  background-color: /*rgba(255,219,135, 0.5)*/ #ffdb87 !important;
+}
+
+.completed {
+  background-color: /*rgba(140,221,158, 0.5)*/ #8cdd9e !important;
+}
+
+.on {
+  opacity: 1 !important;
+}
+
+.off {
+  opacity: 0.5 !important;
+}
+
+h1 {
+  font-family: "S-CoreDream-3Light";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 35px;
+  letter-spacing: 2px;
+  margin: 0;
+  text-align: center;
+}
+
+.input_container {
+  text-align: right;
+}
+
+input {
+  width: 300px;
+  height: 40px;
+  background: #f2ead6;
+  border: 4px solid #000000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  outline: none;
+  font-family: "S-CoreDream-3Light";
+  font-size: 15px;
+}
+input::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+/*list*/
+.list_container {
+  padding: 20px 50px;
+  height: 568px;
+  overflow: scroll;
+}
+.list_container::-webkit-scrollbar {
+  display: none;
+}
+/*
+.list_container::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+  height: 20px;
+}
+.list_container::-webkit-scrollbar-track {
+  background-color: none;
+  border-radius: 10px;
+}
+*/
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1.5fr;
+  gap: 20px;
+  align-items: center;
+  margin: 20px 0px 30px 0px;
+}
+
+.progressBtn_container {
+  display: flex;
+  justify-content: center;
+}
+
+.progress_button {
+  width: 25px;
+  height: 25px;
+  border: 3px solid #000000;
+  border-radius: 50%;
+  outline: none;
+  background-color: #ff7171;
+  cursor: pointer;
+}
+
+.progress_button:hover {
+  width: 27px;
+  height: 27px;
+}
+
+.content_container {
+  width: 100%;
+  display: grid;
+}
+
+.todos {
+  width: 100%;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  overflow: auto;
+  padding: 3px 0px;
+}
+.todos::-webkit-scrollbar {
+  display: none;
+}
+
+.createdDate {
+  width: 100%;
+  font-size: 15px;
+  color: #959595;
+}
+
+.edit_input {
+  width: 230px !important;
+  height: 30px;
+  background: #f2ead6;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  padding: 10px;
+  font-style: normal !important;
+}
+
+hr {
+  margin: 5px 0px;
+  border-color: #000;
+  border: 1px dashed #000000;
+}
+
+.edit_container {
+  display: flex;
+  justify-content: space-between;
+}
+.listBtn {
+  background-color: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: #faf4e6;
+  opacity: 0.3;
+  margin: 0px 3px;
+}
+
+.editBtn {
+  background: url(https://img.icons8.com/material/25/000000/edit--v1.png)
+    no-repeat;
+  width: 25px;
+  height: 25px;
+}
+
+.editBtn:hover {
+  opacity: 1;
+}
+
+.deleteBtn {
+  background: url(https://img.icons8.com/fluent-systems-filled/25/000000/trash.png)
+    no-repeat;
+  width: 25px;
+  height: 25px;
+}
+
+.deleteBtn:hover {
+  opacity: 1;
+}
+
+/* filter */
+
+#reset {
+  background: #faf4e6;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 8px 10px;
+  font-size: 15px;
+  font-family: "S-CoreDream-3Light";
+  position: absolute;
+  top: -60px;
+  right: 0px;
+  outline: none;
+  cursor: pointer;
+}
+
+#reset:hover {
+  position: absolute;
+  background: #f2ead6;
+  box-shadow: 0px 0px 0px #000000;
+}
+
+#reset p {
+  margin: 0px 5px;
+  letter-spacing: 1.5px;
+  font-weight: bold;
+}
+
+#category_img {
+  position: absolute;
+  width: 90px;
+  height: 80px;
+  top: 0px;
+  left: -125px;
+  cursor: pointer;
+}
+
+#category_img:hover {
+  width: 100px;
+  height: 90px;
+}
+#deleteAll_img {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 110px;
+  left: -115px;
+  cursor: pointer;
+}
