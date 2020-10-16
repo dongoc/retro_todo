@@ -49,7 +49,7 @@ const deleteTodo = (id) => {
   })
 }
 
-const resetTodo = (callback) => {
+const resetTodo = () => {
   const q = `DELETE FROM todos`;
   connection.query(q, (err, results) => {
     if (err) throw err;

@@ -61,7 +61,7 @@ const TodoListEntry = ({todo}) => {
   }
 
   const onDeleteBtnClick = () => {
-    axios.delete(`http://localhost:8080/${todo.id}`)
+    axios.delete(`http://localhost:8080/delete/${todo.id}`)
   }
 
   return (

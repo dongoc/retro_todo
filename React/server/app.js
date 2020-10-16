@@ -29,16 +29,16 @@ app.patch('/', (req, res) => {
   }
 })
 
-app.delete('/:id' , (req, res) => {
+app.delete('/delete/:id' , (req, res) => {
   console.log(req.params.id)
   sql.deleteTodo(req.params.id)
   res.send(`delete current todo: id=${req.params.id}`);
 })
 
-// app.delete('/reset' , (req, res) => {
-//   sql.resetTodo();
-//   res.send('reset all todos')
-// })
+app.delete('/reset' , (req, res) => {
+  sql.resetTodo();
+  res.send('reset all todos')
+})
 
 app.listen(8080, () => { 
   console.log('listening on port 8080')

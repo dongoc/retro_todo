@@ -17,9 +17,8 @@ const App =() => {
   useEffect(() => {
     if (todoItem.length) {
       postTodo(todoItem);
+      getTodoLists();
     }
-    console.log('changed')
-    // TODO : rerender
   }, [todoItem])
 
   const getTodoLists = async () => {
@@ -31,6 +30,11 @@ const App =() => {
     await axios.post('http://localhost:8080', {
       content: todoItem
     })
+  }
+
+  const resetAllTodos = async () => {
+    await axios.delete('http://localhost:8080/reset');
+    setTodoLists([]);
   }
 
   return (
@@ -45,7 +49,10 @@ const App =() => {
         setIsOnCompleted={setIsOnCompleted}
       />
       <TodoList todoLists={todoLists}/>
-      <button className="reset">
+      <button 
+        className="reset"
+        onClick={resetAllTodos}
+      >
         <p>RESET</p>
       </button>
       <img className="category_img" src={require('../image/document.png')} alt="sort by category"></img>
