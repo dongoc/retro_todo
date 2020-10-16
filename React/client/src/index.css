@@ -250,7 +250,7 @@ hr {
 
 /* filter */
 
-#reset {
+.reset {
   background: #faf4e6;
   border: 3px solid #000000;
   border-radius: 10px;
@@ -268,19 +268,19 @@ hr {
   cursor: pointer;
 }
 
-#reset:hover {
+.reset:hover {
   position: absolute;
   background: #f2ead6;
   box-shadow: 0px 0px 0px #000000;
 }
 
-#reset p {
+.reset p {
   margin: 0px 5px;
   letter-spacing: 1.5px;
   font-weight: bold;
 }
 
-#category_img {
+.category_img {
   position: absolute;
   width: 90px;
   height: 80px;
@@ -289,7 +289,7 @@ hr {
   cursor: pointer;
 }
 
-#category_img:hover {
+.category_img:hover {
   width: 100px;
   height: 90px;
 }

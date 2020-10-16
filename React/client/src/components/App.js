@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import sql from '../apis/sql';
 import Header from "./Header";
 import TodoList from "./TodoList";
-import ResetBtn from "./ResetBtn";
-import MenuBtn from "./MenuBtn";
 
 const App =() => {
   const [todoItem, setTodoItem] = useState('');
@@ -14,16 +12,17 @@ const App =() => {
 
   useEffect(() => {
     console.log('app', todoItem);
+    // getTodoLists();
   }, [todoItem])
 
   const getTodoLists = async () => {
     const data = await sql.get('/todos');
     console.log(data);
-    // setTodoLists(data);
+    // TODO : setTodoLists(data);
   }
 
   const setTodo = () => {
-    // sql.post('/todos', input)
+    // TODO : sql.post('/todos', input)
   }
 
   return (
@@ -38,8 +37,10 @@ const App =() => {
         setIsOnCompleted={setIsOnCompleted}
       />
       <TodoList todoLists={todoLists}/>
-      <ResetBtn />
-      <MenuBtn />
+      <button className="reset">
+        <p>RESET</p>
+      </button>
+      <img className="category_img" src={require('../image/document.png')} alt="sort by category"></img>
     </div>
   );
 };

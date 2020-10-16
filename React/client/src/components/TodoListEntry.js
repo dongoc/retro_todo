@@ -5,7 +5,6 @@ const TodoListEntry = ({todo}) => {
   const [isEdit, setIsEdit] = useState(false);
   const [progressStatus, setProgressStatus] = useState(todo.progress);
 
-  console.log(progressStatus)
   const onProgressBtnClick = () => {
     const NEXT_STATUS = {
       not_started: 'in_progress',
