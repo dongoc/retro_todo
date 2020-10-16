@@ -5,11 +5,12 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
+  password: 'p@ssw0rd',
   database: 'retro_todo'
 });
 
 const selectAll = (callback) => {
-  const q = `SELECT * FROM todos`;
+  const q = `SELECT * FROM todos ORDER BY id DESC`;
   connection.query(q, (err, results) => {
     if (err) throw err;
     callback(results);
@@ -25,7 +26,7 @@ const insertTodo = (content) => {
 }
 
 const editTodo = (id, content) => {
-  const q = `UPDATE todos SET content=${content} WHERE id=${id}`;
+  const q = `UPDATE todos SET content='${content}' WHERE id=${id}`;
   connection.query(q, (err, results) => {
     if (err) throw err;
     console.log('edit', results)
@@ -40,7 +41,7 @@ const changeProgressStatus = (id, progress) => {
   })
 }
 
-const deleteTodo = (id, callback) => {
+const deleteTodo = (id) => {
   const q = `DELETE FROM todos WHERE id=${id}`;
   connection.query(q, (err, results) => {
     if (err) throw err;

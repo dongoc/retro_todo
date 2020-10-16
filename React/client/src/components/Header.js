@@ -5,6 +5,15 @@ const Header =(props) => {
   // QUESTION : 이렇게 일일히 상태관리를 해주어야 할까?
   // IDEA : const [filterBtnStatus, setFilterBtnStatus] = useState({not_started: true, in_progress: true, completed: true});
 
+  const onSubmitInput = (e) => {
+    if (e.key === 'Enter') {
+      props.setTodoItem(todo);
+      e.target.value = '';
+      // FIXME : rerender
+      props.setTodoItem(todo);
+    }
+  }
+
   return (
     <header>
       <div className="title_container">
@@ -26,7 +35,7 @@ const Header =(props) => {
       <div className="input_container">
         <input 
           onChange={(e) => setTodo(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' ? props.setTodoItem(todo) : null}
+          onKeyPress={onSubmitInput}
           type="text" placeholder="Add your todos..."/>
       </div>
     </header>

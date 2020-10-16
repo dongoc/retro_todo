@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   sql.insertTodo(req.body.content);
-  res.send(`add new todo : ${req.body.content}`)
+  res.send(`add new todo: ${req.body.content}`)
 })
 
 app.patch('/', (req, res) => {
@@ -29,15 +29,16 @@ app.patch('/', (req, res) => {
   }
 })
 
-app.delete('/' , (req, res) => {
-  // TODO : sql.deleteTodo(id)
-  res.send('delete completed')
+app.delete('/:id' , (req, res) => {
+  console.log(req.params.id)
+  sql.deleteTodo(req.params.id)
+  res.send(`delete current todo: id=${req.params.id}`);
 })
 
-app.delete('/reset' , (req, res) => {
-  // TODO : sql.resetTodo()
-  res.send('reset completed')
-})
+// app.delete('/reset' , (req, res) => {
+//   sql.resetTodo();
+//   res.send('reset all todos')
+// })
 
 app.listen(8080, () => { 
   console.log('listening on port 8080')

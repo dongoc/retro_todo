@@ -22,6 +22,7 @@ const TodoListEntry = ({todo}) => {
 
   useEffect(() => {
     patchProgressStatus();
+    // eslint-disable-next-line
   }, [progressStatus])
 
   const patchProgressStatus = async () => {
@@ -53,11 +54,14 @@ const TodoListEntry = ({todo}) => {
 
   const onSubmitInput = () => {
     setIsEdit(!isEdit);
-    // TODO : patch
+    axios.patch('http://localhost:8080', {
+      id: todo.id,
+      content: currentInput
+    })
   }
 
   const onDeleteBtnClick = () => {
-    // TODO : DELETE
+    axios.delete(`http://localhost:8080/${todo.id}`)
   }
 
   return (

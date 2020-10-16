@@ -18,6 +18,7 @@ const App =() => {
     if (todoItem.length) {
       postTodo(todoItem);
     }
+    console.log('changed')
     // TODO : rerender
   }, [todoItem])
 
