@@ -3,7 +3,7 @@ import axios from 'axios';
 import Header from "./Header";
 import TodoList from "./TodoList";
 
-const App =() => {
+const App = () => {
   const [todoItem, setTodoItem] = useState('');
   const [todoLists, setTodoLists] = useState([]);
   const [isOnNotStarted, setIsOnNotStarted] = useState(true);
@@ -48,7 +48,12 @@ const App =() => {
         isOnCompleted={isOnCompleted} 
         setIsOnCompleted={setIsOnCompleted}
       />
-      <TodoList todoLists={todoLists}/>
+      <TodoList 
+        todoLists={todoLists}
+        isOnNotStarted={isOnNotStarted} 
+        isOnInProgress={isOnInProgress} 
+        isOnCompleted={isOnCompleted} 
+      />
       <button 
         className="reset"
         onClick={resetAllTodos}

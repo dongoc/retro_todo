@@ -1,17 +1,24 @@
 import React from "react";
 import TodoListEntry from "./TodoListEntry";
 
-const TodoList =({todoLists}) => {
+const TodoList =(props) => {
 
   const renderTodoLists = () => {
-    return todoLists.map((todo) => {
-      return <TodoListEntry key={todo.id} todo={todo}/>
+    return props.todoLists.map((todo) => {
+      return (
+        <TodoListEntry 
+          key={todo.id} 
+          todo={todo}
+          isOnNotStarted={props.isOnNotStarted}
+          isOnInProgress={props.isOnInProgress}
+          isOnCompleted={props.isOnCompleted}
+        />)
     })
   }
 
   return (
     <div className="list_container">
-      { !todoLists.length 
+      { !props.todoLists.length 
         ? (
             <div className="noList">{`Add your todos :)`}</div>
       ) : (

@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
+import { format } from 'date-fns'
 
-const TodoListEntry = ({todo}) => {
-  const [currentInput, setCurrentInput] = useState(todo.content);
+const TodoListEntry = (props) => {
+  const [currentInput, setCurrentInput] = useState(props.todo.content);
   const [isEdit, setIsEdit] = useState(false);
-  const [progressStatus, setProgressStatus] = useState(todo.progress);
+  const [progressStatus, setProgressStatus] = useState(props.todo.progress);
 
   const onProgressBtnClick = () => {
     const NEXT_STATUS = {
@@ -27,7 +28,7 @@ const TodoListEntry = ({todo}) => {
 
   const patchProgressStatus = async () => {
     await axios.patch('http://localhost:8080', {
-      id: todo.id,
+      id: props.todo.id,
       progress: progressStatus
     })
   }
@@ -55,17 +56,35 @@ const TodoListEntry = ({todo}) => {
   const onSubmitInput = () => {
     setIsEdit(!isEdit);
     axios.patch('http://localhost:8080', {
-      id: todo.id,
+      id: props.todo.id,
       content: currentInput
     })
   }
 
   const onDeleteBtnClick = () => {
-    axios.delete(`http://localhost:8080/delete/${todo.id}`)
+    axios.delete(`http://localhost:8080/delete/${props.todo.id}`)
+  }
+
+  const setFilterDisplay = () => {
+    let className = 'grid';
+    if (progressStatus === 'not_started') {
+      if (!props.isOnNotStarted) {
+        className = 'none';
+      }
+    } else if (progressStatus === 'in_progress') {
+      if (!props.isOnInProgress) {
+        className = 'none';
+      }
+    } else if (progressStatus === 'completed') {
+      if (!props.isOnCompleted) {
+        className = 'none';
+      }
+    }
+    return className;
   }
 
   return (
-    <li>
+    <li style={{display: setFilterDisplay()}}>
       <div className="progressBtn_container">
         <button 
           className={`progress_button ${progressStatus}`}
@@ -76,7 +95,7 @@ const TodoListEntry = ({todo}) => {
       <div className="content_container">
         {renderItemOrInput()}
         <hr />
-        <div className="createdDate">{todo.created_at}</div>
+        <div className="createdDate">{props.todo.created_at.slice(0, 10)}</div>
       </div>
       <div className="edit_container">
         <button 
