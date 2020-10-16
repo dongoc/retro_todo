@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+// eslint-disable-next-line
+import React, { useState, useEffect, useMemo } from "react";
 import axios from 'axios';
 import Header from "./Header";
 import TodoList from "./TodoList";
@@ -9,11 +10,11 @@ const App = () => {
   const [isOnNotStarted, setIsOnNotStarted] = useState(true);
   const [isOnInProgress, setIsOnInProgress] = useState(true);
   const [isOnCompleted, setIsOnCompleted] = useState(true);
-  const [flag, setFlag] = useState(false);
 
-  useEffect(() => {
-    getTodoLists();
-  }, []);
+  // NOTE : useMemo로 대체 가능
+  // useEffect(() => {
+  //   getTodoLists();
+  // }, [])
 
   useEffect(() => {
     if (todoItem.length) {
