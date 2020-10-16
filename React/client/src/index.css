@@ -30,7 +30,7 @@ body {
   position: relative;
 }
 
-#noList {
+.noList {
   text-align: center;
   font-size: 20px;
   color: #555;
