@@ -56,7 +56,7 @@ const TodoListEntry = ({todo}) => {
       <div className="content_container">
         {renderItemOrInput()}
         <hr />
-        <div className="createdDate">{todo.createdAt}</div>
+        <div className="createdDate">{todo.created_at}</div>
       </div>
       <div className="edit_container">
         <button 

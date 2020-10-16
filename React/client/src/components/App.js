@@ -16,7 +16,7 @@ const App =() => {
   }, [todoItem])
 
   const getTodoLists = async () => {
-    const data = await sql.get('/todos');
+    const data = await sql.get('/');
     console.log(data);
     // TODO : setTodoLists(data);
   }
