@@ -16,17 +16,24 @@ const selectAll = (callback) => {
   });
 };
 
-const insertTodo = (content, callback) => {
+const insertTodo = (content) => {
   const todo = { content };
   const q = `INSERT INTO todos SET ?`;
   connection.query(q, todo, (err, results) => {
     if (err) throw err;
-    console.log('insert', results)
   })
 }
 
-const editTodo = (id, content, callback) => {
+const editTodo = (id, content) => {
   const q = `UPDATE todos SET content=${content} WHERE id=${id}`;
+  connection.query(q, (err, results) => {
+    if (err) throw err;
+    console.log('edit', results)
+  })
+}
+
+const changeProgressStatus = (id, progress) => {
+  const q = `UPDATE todos SET progress='${progress}' WHERE id=${id}`;
   connection.query(q, (err, results) => {
     if (err) throw err;
     console.log('edit', results)
@@ -53,6 +60,7 @@ module.exports = {
   selectAll,
   insertTodo,
   editTodo,
+  changeProgressStatus,
   deleteTodo,
   resetTodo
 }

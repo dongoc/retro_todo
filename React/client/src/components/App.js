@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import sql from '../apis/sql';
+import axios from 'axios';
 import Header from "./Header";
 import TodoList from "./TodoList";
 
@@ -15,17 +15,21 @@ const App =() => {
   }, []);
 
   useEffect(() => {
-    console.log('app', todoItem);
-    // getTodoLists();
+    if (todoItem.length) {
+      postTodo(todoItem);
+    }
+    // TODO : rerender
   }, [todoItem])
 
   const getTodoLists = async () => {
-    const res = await sql.get('http://localhost:8080')
+    const res = await axios.get('http://localhost:8080')
     setTodoLists(res.data);
   }
 
-  const setTodo = () => {
-    // TODO : sql.post('/todos', input)
+  const postTodo = async (todoItem) => {
+    await axios.post('http://localhost:8080', {
+      content: todoItem
+    })
   }
 
   return (

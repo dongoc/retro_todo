@@ -15,13 +15,18 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  sql.insertTodo(req.query.content);
-  res.send('post completed!')
+  sql.insertTodo(req.body.content);
+  res.send(`add new todo : ${req.body.content}`)
 })
 
 app.patch('/', (req, res) => {
-  // TODO : sql.editTodo(id, content)
-  res.send('edit completed')
+  if (!req.body.progress) {
+    sql.editTodo(req.body.id, req.body.content)
+    res.send(`edit current todo: id=${req.body.id}, content=${req.body.content}`)
+  } else {
+    sql.changeProgressStatus(req.body.id, req.body.progress)
+    res.send(`edit current todo: id=${req.body.id}, progress=${req.body.progress}`)
+  }
 })
 
 app.delete('/' , (req, res) => {

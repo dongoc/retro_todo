@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import axios from 'axios';
 
 const TodoListEntry = ({todo}) => {
   const [currentInput, setCurrentInput] = useState(todo.content);
@@ -11,8 +12,23 @@ const TodoListEntry = ({todo}) => {
       in_progress: 'completed',
       completed: 'not_started'
     }
+    // console.log('before', progressStatus)
+    // console.log('next', NEXT_STATUS[progressStatus])
     setProgressStatus(NEXT_STATUS[progressStatus]);
-    // TODO : patch
+    // QUESTION : 바로 setProgressStatus가 반영이 되지 않는 이유?
+    // console.log('after', progressStatus);
+    // patchProgressStatus();
+  }
+
+  useEffect(() => {
+    patchProgressStatus();
+  }, [progressStatus])
+
+  const patchProgressStatus = async () => {
+    await axios.patch('http://localhost:8080', {
+      id: todo.id,
+      progress: progressStatus
+    })
   }
 
   const renderItemOrInput = () => {
@@ -73,16 +89,3 @@ const TodoListEntry = ({todo}) => {
 };
 
 export default TodoListEntry;
-
-
-// // <div class="list_container">
-// //       <ul>
-// //       <li id="0"><div class="progressBtn_container">
-// // <button class="progress_button not_started"></button>
-// // </div><
-// // div class="content_container"><div class="todos">todo</div><hr><div class="createdDate">2020.10.16 Fri</div><
-// // /><div class="edit_container">
-// <button class="listBtn editBtn"></button>
-// <butprintfirstmessegeton class="listBtn deleteBtn"></butprintfirstmessegeton></div></li></ul>
-// //       <div id="noList" style="display: none;">Add your todos :)</div>
-// //     </div>
