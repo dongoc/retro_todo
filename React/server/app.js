@@ -9,7 +9,9 @@ const app = express();
 app.use(cors(), bodyParser.json());
 
 app.get('/', (req, res) => {
-  res.send(sql.selectAll())
+  sql.selectAll((data) => {
+    res.send(data);
+  });
 })
 
 app.post('/', (req, res) => {

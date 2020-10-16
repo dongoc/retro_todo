@@ -11,14 +11,17 @@ const App =() => {
   const [isOnCompleted, setIsOnCompleted] = useState(true);
 
   useEffect(() => {
+    getTodoLists();
+  }, []);
+
+  useEffect(() => {
     console.log('app', todoItem);
     // getTodoLists();
   }, [todoItem])
 
   const getTodoLists = async () => {
-    const data = await sql.get('/');
-    console.log(data);
-    // TODO : setTodoLists(data);
+    const res = await sql.get('http://localhost:8080')
+    setTodoLists(res.data);
   }
 
   const setTodo = () => {

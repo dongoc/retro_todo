@@ -8,16 +8,15 @@ const connection = mysql.createConnection({
   database: 'retro_todo'
 });
 
-const selectAll = () => {
+const selectAll = (callback) => {
   const q = `SELECT * FROM todos`;
   connection.query(q, (err, results) => {
     if (err) throw err;
-    console.log(results);
-    return results;
-  })
-}
+    callback(results);
+  });
+};
 
-const insertTodo = (content) => {
+const insertTodo = (content, callback) => {
   const todo = { content };
   const q = `INSERT INTO todos SET ?`;
   connection.query(q, todo, (err, results) => {
@@ -26,7 +25,7 @@ const insertTodo = (content) => {
   })
 }
 
-const editTodo = (id, content) => {
+const editTodo = (id, content, callback) => {
   const q = `UPDATE todos SET content=${content} WHERE id=${id}`;
   connection.query(q, (err, results) => {
     if (err) throw err;
@@ -34,7 +33,7 @@ const editTodo = (id, content) => {
   })
 }
 
-const deleteTodo = (id) => {
+const deleteTodo = (id, callback) => {
   const q = `DELETE FROM todos WHERE id=${id}`;
   connection.query(q, (err, results) => {
     if (err) throw err;
@@ -42,7 +41,7 @@ const deleteTodo = (id) => {
   })
 }
 
-const resetTodo = () => {
+const resetTodo = (callback) => {
   const q = `DELETE FROM todos`;
   connection.query(q, (err, results) => {
     if (err) throw err;
